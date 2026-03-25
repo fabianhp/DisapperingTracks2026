@@ -1,0 +1,40 @@
+#ifndef TOYDETECTOR_ATLAS_H
+#define TOYDETECTOR_ATLAS_H
+
+#include "Pythia8/Pythia.h"
+#include "fastjet/ClusterSequence.hh"
+#include <vector>
+
+namespace Pythia8 {
+
+class ToyDetector {
+
+public:
+  // Atributos
+  std::vector<Vec4> jets;
+  std::vector<Vec4> electrons;
+  std::vector<Vec4> muons;
+  std::vector<Vec4> leptons;
+  std::vector<Vec4> tracklets;
+  Vec4 MET, METnaive;
+  std::vector<fastjet::PseudoJet> fjInputs;
+  Pythia8::Rndm rndm;
+
+  // Métodos
+  bool getObjects(const Event& event);
+  bool getTracklets(const Event& event);
+  void printObjects();
+
+  // Utilidad
+  double REtaPhi(const Vec4& a, const Vec4& b) const;
+
+  // Parámetros FastJet
+  static double Rparam;
+  static fastjet::Strategy strategy;
+  static fastjet::RecombinationScheme recombScheme;
+  static fastjet::JetDefinition* jetDef;
+};
+
+} // namespace Pythia8
+
+#endif

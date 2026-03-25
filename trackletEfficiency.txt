@@ -1,0 +1,8 @@
+#ifndef TRACKLET_EFFICIENCY_H
+#define TRACKLET_EFFICIENCY_H
+
+namespace ATLASDT {
+  double trackletEff(double r_mm, double eta);
+}
+
+#endif
