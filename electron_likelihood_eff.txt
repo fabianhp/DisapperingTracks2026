@@ -1,0 +1,9 @@
+//#include <Pythia8/Pythia.h>
+
+namespace Pythia8{
+
+	double electron_eff_loose_et(double et);
+	double electron_eff_tight_et(double et);
+
+
+}
