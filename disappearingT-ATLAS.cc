@@ -20,12 +20,12 @@
 #include <vector>
 
 using namespace Pythia8;
-
+//4 INPUT PARAMETERS TO IDENTIFY PATH TO LHE.GZ FILE
 int main(int argc, char *argv[]) {
-  string a = argv[1]; // ENTER NEUTRALINO MASS FROM COMMAND LINE
-  string b = argv[2]; // ENTER LAMBDA COUPLING FROM COMMAND LINE
-  string c = argv[3];
-  string d = argv[4];
+  string a = argv[1]; // ENTER NEUTRAL VECTOR MASS VALUE
+  string b = argv[2]; // ENTER MASS SPLIT VALUE
+  string c = argv[3]; // ENTER LAMBDA_HV /HIGGS PORTAL VALUE
+  string d = argv[4]; // FOLDER (RELATED WITH MASS VALUE)----> TO CORRECT
   #ifdef GZIPSUPPORT
     bool useGzip = true;
   #else
