@@ -1,0 +1,20 @@
+# build products
+*.o
+analysis/dtSR4
+__pycache__/
+*.pyc
+# MadGraph output and generated cards
+generation/*/quint_dt/
+generation/*/wino_dt/
+generation/*/cards/
+generation/*/proc_card_*.dat
+generation/*/grid_summary.dat
+generation/*/generacion_proceso.log
+# analysis output
+analysis/resultados*/
+analysis/nsig.dat
+analysis/limites*.dat
+analysis/*.pdf
+analysis/*.png
+*.lhe
+*.lhe.gz

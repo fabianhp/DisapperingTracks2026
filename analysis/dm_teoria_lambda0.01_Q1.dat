@@ -1,0 +1,8 @@
+# Split radiativo a un lazo, lambda_HV = 0.01, escala Q = 1.
+# Digitalizado de la Fig. 1 del borrador (curva roja a trazos). Reemplazar por los valores exactos.
+# M_V[GeV]  Delta_m[GeV]
+100  0.3020
+150  0.2107
+231  0.1439
+361  0.0962
+538  0.0672
