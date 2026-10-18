@@ -1,0 +1,121 @@
+(* DARK SECTOR*)
+M$ModelName = "VQUINT";
+
+(* CORREGIDO: los generadores de un grupo no abeliano no se pueden reescalar.
+   Deben cumplir [Ta,Tb] = I Eps[a,b,c] Tc, lo que fija T3 = diag(2,1,0,-1,-2)
+   y Tr[Ta.Tb] = 10 delta_ab para el quintuplete. Se quita el factor 1/Sqrt[20]. *)
+gen5x :=(-1)*{{0,1,0,0,0},
+    {1,0,Sqrt[6]/2,0,0},
+    {0,Sqrt[6]/2,0,-Sqrt[6]/2,0},
+    {0,0,-Sqrt[6]/2,0,-1},{0,0,0,-1,0}};
+
+gen5y :=-I*{{0,-1,0,0,0},
+    {1,0,-Sqrt[6]/2,0,0},
+    {0,Sqrt[6]/2,0,Sqrt[6]/2,0},
+    {0,0,-Sqrt[6]/2,0,1},
+    {0,0,0,-1,0}};
+    
+gen5z :={{2,0,0,0,0},{0,1,0,0,0},{0,0,0,0,0},{0,0,0,-1,0},{0,0,0,0,-2}};
+
+gen5 :={gen5x,gen5y,gen5z};
+
+IndexRange[Index[SU2Q      ]] = Unfold[Range[5]]; 
+
+IndexStyle[SU2D,       u];
+
+
+(* Valores por defecto: M = 300 GeV con dm = 166 MeV entre V+ y V0 y 3 dm entre V++ y V+;
+   anchos de V+ y V++ segun la formula de decaimiento a pion; V0 estable;
+   kappa = 0 y xiinv = 1/5 como en el articulo. *)
+M$ClassesDescription = {
+  V[5] == {
+    ClassName ->Vplusplus ,
+    SelfConjugate-> False,
+    Mass -> {mvplusplus,300.664},
+    Width -> {Wvplusplus,3.3147*^-13},
+    QuantumNumbers   -> {Q -> 2},
+    ParticleName -> "V++",
+    AntiParticleName ->"V--",
+    FullName->"doubly charged vector"
+    },
+  V[7] == {
+    ClassName ->Vplus ,
+    SelfConjugate-> False,
+    Mass -> {mvplus,300.166},
+    Width -> {Wvplus,1.0386*^-14},
+    QuantumNumbers   -> {Q -> 1},
+    ParticleName -> "V+",
+    AntiParticleName ->"V-",
+    FullName->"charged vector"
+    },
+    V[6]=={
+    ClassName->V0,
+    SelfConjugate-> True,
+    Mass ->{mv,300},
+    Width -> {Wv0,0},
+    ParticleName->"V0",
+    FullName->"neutral vector (real field)"
+    },
+
+    V[8] == { 
+    ClassName      -> Vquint,  
+    Unphysical     -> True, 
+    QuantumNumbers   -> {Y -> 0},
+    Indices        -> {Index[SU2Q]},
+    FlavorIndex    -> SU2Q,
+    SelfConjugate  -> False,
+    Definitions    -> { Vquint[mu_,1] -> Vplusplus[mu], 
+    Vquint[mu_,2] -> Vplus[mu], 
+    Vquint[mu_,3] -> V0[mu],
+    Vquint[mu_,4] -> Vplusbar[mu], 
+    Vquint[mu_,5] -> Vplusplusbar[mu]},
+    FullName->"The vector quintuplet" 
+    },
+
+(* ANADIDO: el pion cargado, que usa LVVpi (pip, pipbar). Faltaba en este archivo. *)
+  S[5] == {
+    ClassName        -> pip,
+    SelfConjugate    -> False,
+    Mass             -> {MPIM, 0.13957},
+    Width            -> 0,
+    QuantumNumbers   -> {Q -> 1},
+    PDG              -> 211,
+    ParticleName     -> "pi+",
+    AntiParticleName -> "pi-",
+    FullName         -> "charged pion"
+    }
+  };
+
+
+M$Parameters = {
+(*independent parameters*)
+
+  
+  alpha3 == {
+    ParameterType -> External,
+    Value -> 0.02,
+    InteractionOrder -> {NP,1},
+    Description -> "quartic interaction for vdoub"},
+  kappa == {
+    ParameterType -> External,
+    Value -> 0,
+    Description -> "Non minimal gauge coupling"},
+  xiinv == {
+    ParameterType -> External,
+    Value -> 0.2,
+    Description -> "pseudo-gauge coupling"},
+  lambdav == {
+    ParameterType -> External,
+    Value -> 1,
+    InteractionOrder -> {QED,2},
+    Description -> "higgs coupling of Vquint"},
+  fPi == {
+    ParameterType    -> External,
+    Value            -> 0.0921,
+    InteractionOrder -> {QCD,0},
+    Description      -> "Pion decay constant",
+    TeX              -> Subscript[f, "\[Pi]"]
+  }
+(* CORREGIDO: aqui habia un "};" que convertia esta entrada en Null;
+   por eso el UFO tenia un parametro llamado "Null" y no tenia fPi. *)
+};

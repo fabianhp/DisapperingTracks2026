@@ -1,0 +1,20 @@
+# Eficiencia de reconstruccion de tracklets de 4 capas vs radio de decaimiento.
+# Fuente: ATLAS, JHEP 07 (2026) 152 (arXiv:2603.08315), Fig. 2(a), puntos rojos,
+# extraidos de las coordenadas vectoriales del PDF (sin incertidumbres).
+# Muestra de ATLAS: higgsino 250 GeV, 0.04 ns. La figura no depende de eta:
+# aqui se aplica plana en 0.1 < |eta| < 1.9 (suposicion).
+# etaLo etaHi rLo[mm] rHi[mm] eff
+0.1 1.9 90.0 100.0 0.0007
+0.1 1.9 100.0 110.0 0.0011
+0.1 1.9 110.0 120.0 0.0205
+0.1 1.9 120.0 130.0 0.5203
+0.1 1.9 130.0 140.0 0.6902
+0.1 1.9 140.0 150.0 0.6560
+0.1 1.9 150.0 170.0 0.7153
+0.1 1.9 170.0 190.0 0.7042
+0.1 1.9 190.0 210.0 0.6692
+0.1 1.9 210.0 230.0 0.6267
+0.1 1.9 230.0 250.0 0.8002
+0.1 1.9 250.0 270.0 0.6383
+0.1 1.9 270.0 290.0 0.5824
+0.1 1.9 290.0 310.0 0.1698

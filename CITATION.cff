@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Disappearing tracks from electroweak vector dark matter: recast code"
+authors:
+  - family-names: Escalona
+    given-names: Patricio
+  - family-names: Hernández-Pinto
+    given-names: Fabián
+  - family-names: Zerwekh
+    given-names: Alfonso R.
+license: MIT
+repository-code: "https://github.com/fabianhp/DisapperingTracks2026"
+preferred-citation:
+  type: article
+  title: "Disappearing Tracks from Electroweak Vector Dark Matter at the LHC"
+  authors:
+    - family-names: Escalona
+      given-names: Patricio
+    - family-names: Hernández-Pinto
+      given-names: Fabián
+    - family-names: Zerwekh
+      given-names: Alfonso R.
+  year: 2026
+  identifiers:
+    - type: other
+      value: "arXiv:2610.14182"
+  url: "https://arxiv.org/abs/2610.14182"
